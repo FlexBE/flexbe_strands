@@ -21,7 +21,7 @@ class RecognizeObjectState(EventState):
 	'''
 
 	def __init__(self, object_name):
-		super(RecognizeObjectState, self).__init__(outcomes = ['done'],
+		super(RecognizeObjectState, self).__init__(outcomes = ['detected', 'not_detected', 'failed'],
 													input_keys = ['pointcloud'])
 
 		self._srv_topic = '/recognition_service/sv_recognition'
