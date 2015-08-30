@@ -9,7 +9,7 @@ from flexbe_core.proxy import ProxySubscriberCached
 from sensor_msgs.msg import PointCloud2
 
 
-class TakePicture(EventState):
+class TakePictureState(EventState):
 	'''
 	Stores the picture  of the given topic.
 
@@ -20,7 +20,7 @@ class TakePicture(EventState):
 	'''
 
 	def __init__(self):
-		super(StorePointcloudState, self).__init__(outcomes = ['done'],	output_keys = ['Image'])
+		super(TakePictureState, self).__init__(outcomes = ['done'],	output_keys = ['Image'])
                 self._topic = '/head_xtion/rgb/image_rect'
 		self._sub = ProxySubscriberCached({self._topic:Image})
 
@@ -28,7 +28,7 @@ class TakePicture(EventState):
 	def execute(self, userdata):
 		
 		if self._sub.has_msg(self._topic):
-			userdata.image = self._sub.get_last_msg(self._topic)
+			userdata.Image = self._sub.get_last_msg(self._topic)
 			return 'done'
 		
 
