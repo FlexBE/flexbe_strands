@@ -29,7 +29,7 @@ class TakePictureState(EventState):
 		
 		if self._sub.has_msg(self._topic):
 			userdata.Image = self._sub.get_last_msg(self._topic)
-			return 'done'
+		return 'done'
 		
 
 	
