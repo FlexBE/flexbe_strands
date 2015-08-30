@@ -25,7 +25,9 @@ class PickJokeState(EventState):
 
 		self._joke_selection = joke_selection
 		self._jokes = [	'Boy is your name homework because I am not doing you and I should be',
-                                 'Are you David Beckham? Because I would bend for you', 'What"s a nice guy like you doing with a body like that'
+                                 'Are you David Beckham? Because I would bend for you', 'What"s a nice guy like you doing with a body like that',
+                   'I am not drunk, I am just intoxicated by you'. 
+
 		]
 
 
