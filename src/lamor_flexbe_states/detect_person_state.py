@@ -38,7 +38,7 @@ class DetectPersonState(EventState):
 			userdata.person_pose = None
 			return 'not_detected'
 
-		if self._sub.has_msgs(self._topic):
+		if self._sub.has_msg(self._topic):
 			userdata.person_pose = self._sub.get_last_msg(self._topic)
 			return 'detected'
 
