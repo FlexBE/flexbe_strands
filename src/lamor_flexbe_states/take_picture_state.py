@@ -23,7 +23,7 @@ class TakePicture(EventState):
 
 	def __init__(self, topic):
 		super(StorePointcloudState, self).__init__(outcomes = ['done'],	output_keys = ['Image'])
-                self._topic = '/camera/image_raw' 
+                self._topic = '/head_xtion/rgb/image_rect'
 		self._sub = ProxySubscriberCached({self._topic:Image})
 
 
