@@ -20,7 +20,7 @@ class DetectPersonState(EventState):
 
 
 	def __init__(self, wait_timeout):
-		super(MetricSweepState, self).__init__(outcomes = ['detected', 'not_detected'],
+		super(DetectPersonState, self).__init__(outcomes = ['detected', 'not_detected'],
 												output_keys = ['person_pose'])
 
 		self._wait_timeout = rospy.Duration(wait_timeout)
