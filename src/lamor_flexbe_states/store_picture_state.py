@@ -27,8 +27,8 @@ class StorePictureState(EventState):
 		return 'done'
 
 	def on_enter(self,userdata):
-
-		cv_image = CvBridge.imgmsg_to_cv2(userdata, desired_encoding="passthrough")
+		bridge =  CvBridge()
+		cv_image = bridge.imgmsg_to_cv2(userdata.Image, desired_encoding="passthrough")
 		filename = os.path.expanduser('~/picture_'+str(rospy.Time.now()))
 		cv2.imwrite(filename,cv_image)
 		print 'Picture has been saved to the home folder'   
