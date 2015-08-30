@@ -4,7 +4,7 @@ import rospy
 from flexbe_core import EventState, Logger
 from flexbe_core.proxy import ProxyServiceCaller
 
-from recognition_srv_definitions.srv import recognizeRequest
+from recognition_srv_definitions.srv import recognize, recognizeRequest
 
 class RecognizeObjectState(EventState):
 	'''
@@ -25,7 +25,7 @@ class RecognizeObjectState(EventState):
 													input_keys = ['pointcloud'])
 
 		self._srv_topic = '/recognition_service/sv_recognition'
-		self._srv = ProxyServiceCaller({self._srv_topic: recognizeRequest})
+		self._srv = ProxyServiceCaller({self._srv_topic: recognize})
 
 		self._object_name = object_name
 		self._srv_result = None
