@@ -20,17 +20,19 @@ class StorePictureState(EventState):
 	'''
 
 	def __init__(self):
-		super(StorePictureState, self).__init__(outcomes = ['done'],    input_keys = ['Image'])
-				
+		super(StorePictureState, self).__init__(outcomes = ['done'],    input_keys = ['Image'], output_keys=['filename'])
+			
+		self._filename = None
 
 	def execute(self, userdata):
+		userdata.filename = self._filename
 		return 'done'
 
 	def on_enter(self,userdata):
 		bridge =  CvBridge()
 		cv_image = bridge.imgmsg_to_cv2(userdata.Image, desired_encoding="passthrough")
-		filename = os.path.expanduser('~/picture_'+str(rospy.Time.now())+'.jpg')
-		print 'Saving file to ' , filename
-		cv2.imwrite(filename,cv_image)
+		self._filename = os.path.expanduser('~/picture_'+str(rospy.Time.now())+'.jpg')
+		print 'Saving file to ' , self._filename
+		cv2.imwrite(self._filename,cv_image)
 		print 'Picture has been saved to the home folder'   
 

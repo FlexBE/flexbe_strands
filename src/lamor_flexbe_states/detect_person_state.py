@@ -44,5 +44,6 @@ class DetectPersonState(EventState):
 
 		
 	def on_enter(self, userdata):
+		self._sub.remove_last_msg(self._topic)
 		self._start_waiting_time = rospy.Time.now()
 		
