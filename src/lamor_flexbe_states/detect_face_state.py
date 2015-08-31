@@ -47,6 +47,8 @@ class DetectFaceState(EventState):
         faceCascade = cv2.CascadeClassifier(os.path.expanduser('~/haarcascade_frontalface_default.xml'))
         faces = faceCascade.detectMultiScale(cv2.cvtColor(cv_image,cv2.COLOR_BGR2GRAY),scaleFactor=1.1,minNeighbors=5,minSize=(30, 30),flags=cv2.cv.CV_HAAR_SCALE_IMAGE)
         if (len(faces)>=1):
+            print 'I have detected face' 
             return 'face_is_detected'
         else:
+            print 'No face was detected'
             return 'face_is_not_detected'
