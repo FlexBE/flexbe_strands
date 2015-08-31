@@ -41,7 +41,7 @@ class DisplayPictureState(EventState):
         cv2.imshow('ECMR_2015_Official_Photographer',cv_image)
         print 'Displaying the Picture'        
         #wait for keypress()
-        cv2.waitKey(30000)
+        cv2.waitKey(15000)
         cv2.destroyAllWindows()
         cv2.waitKey(1)
 
