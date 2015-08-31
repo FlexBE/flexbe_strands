@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import rospy
+
 from flexbe_core import EventState, Logger
 from flexbe_core.proxy import ProxyActionClient
 
