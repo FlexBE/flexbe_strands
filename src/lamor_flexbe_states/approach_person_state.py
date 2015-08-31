@@ -37,6 +37,7 @@ class ApproachPersonState(EventState):
 		# and makes sure only one client is used, no matter how often this state is used in a behavior.
 		self._topic = 'stalk_pose'
 		self._client = ProxyActionClient({self._topic: StalkPoseAction}) # pass required clients as dict (topic: type)
+		self._timeoutTime = None
 
 		self._personTopic = '/upper_body_detector/closest_bounding_box_centre'
 
@@ -49,6 +50,9 @@ class ApproachPersonState(EventState):
 		# Check if the client failed to send the goal.
 		if self._error:
 			return 'command_error'
+
+		if rospy.Time.now() > self._timeoutTime:
+			return 'goal_failed'
 
 		# Check if the action has been finished
 		if self._client.has_result(self._topic):
@@ -76,6 +80,8 @@ class ApproachPersonState(EventState):
 		goal.topic_name = self._personTopic
 		goal.target = userdata.person_pose
 		self._error = False
+
+		self._timeoutTime = rospy.Time.now() + rospy.Duration(20)
 
 		try:
 			self._client.send_goal(self._topic, goal)
