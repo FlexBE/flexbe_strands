@@ -18,7 +18,7 @@ class MoveCameraState(EventState):
 
 	'''
 
-	def __init__(self, dishes_to_do):
+	def __init__(self):
 		# See example_state.py for basic explanations.
 		super(MoveCameraState, self).__init__(outcomes = ['done', 'failed'],
 												 input_keys = ['pan', 'tilt'])
