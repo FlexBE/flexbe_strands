@@ -5,12 +5,6 @@ Created on Mon Aug 31 17:49:55 2015
 @author: tayyab
 """
 
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Aug 31 09:54:16 2015
-
-@author: tayyab
-"""
 
 #!/usr/bin/env python
 import rospy
@@ -30,7 +24,7 @@ class DetectFaceState(EventState):
     Displays the picture to the local home folder.
 
     ># Image    Image       The received Image
-    <= done                 Displaying the Picture
+    <= face_is_detected                 Detecting Face to Prune False positives
     '''
     
     def __init__(self):
