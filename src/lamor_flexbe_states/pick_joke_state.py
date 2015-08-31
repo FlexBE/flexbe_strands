@@ -27,7 +27,9 @@ class PickJokeState(EventState):
 		self._jokes = [	'Boy is your name homework because I am not doing you and I should be',
                                  'Are you David Beckham? Because I would bend for you', 'What"s a nice guy like you doing with a body like that',
                    'I am not drunk, I am just intoxicated by you','Your mama is so fat, I took a picture of her last Christmas and its still printing.',
-			'Your mama is so stupid, she put two quarters in her ears and thought she was listening to 50 Cent. ',
+			'Your mama is so stupid, she put two quarters in her ears and thought she was listening to 50 Cent. ', 'I am sorry, I do not think we have met. I would not forget a pretty face like that.','Life without you would be like a broken pencil           pointless.','Can I borrow a kiss? I promise I’ll give it back.' 
+
+
                          
 
 		]
