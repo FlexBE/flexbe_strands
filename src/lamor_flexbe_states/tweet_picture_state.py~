@@ -59,7 +59,7 @@ class TweetPictureState(EventState):
         # Create the goal.
         tweet = SendTweetGoal() 
         tweet.text = userdata.tweet_text
-        tweet.with_photo = True
+        tweet.with_foto = True
         img = cv2.imread(userdata.picture_path)
 
         bridge = CvBridge()

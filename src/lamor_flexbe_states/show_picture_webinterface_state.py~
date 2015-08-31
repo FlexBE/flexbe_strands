@@ -30,7 +30,7 @@ class ShowPictureWebinterfaceState(EventState):
         if self._sub.has_msg(self._sub_topic):
             msg = self._sub.get_last_msg(self._sub_topic)
 
-            if msg.data == 'yes':
+            if msg.data == 'yes'
                 return 'tweet'
             else:
                 return 'forget'

@@ -28,7 +28,7 @@ class ApproachPersonState(EventState):
 
 	def __init__(self):
 		# See example_state.py for basic explanations.
-		super(ApproachPersonState, self).__init__(outcomes = ['goal_reached', 'goal_failed','command_error'], input_keys = ['person_pose'])
+		super(ApproachPersonActionState, self).__init__(outcomes = ['goal_reached', 'goal_failed','command_error'], input_keys = ['person_pose'])
 
 		# Create the action client when building the behavior.
 		# This will cause the behavior to wait for the client before starting execution
