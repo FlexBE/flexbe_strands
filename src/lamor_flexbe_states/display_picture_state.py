@@ -43,4 +43,5 @@ class DisplayPictureState(EventState):
         #wait for keypress()
         cv2.waitKey(30000)
         cv2.destroyAllWindows()
+        cv2.waitKey(1)
 
