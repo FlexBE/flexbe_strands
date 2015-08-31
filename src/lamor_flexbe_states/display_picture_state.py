@@ -19,16 +19,16 @@ from sensor_msgs.msg import PointCloud2
 
 
 
-class StorePictureState(EventState):
+class DisplayPictureState(EventState):
     '''
-    Stores the picture to the local home folder.
+    Displays the picture to the local home folder.
 
     ># Image    Image       The received Image
-    <= done            Displaying the Picture
+    <= done                 Displaying the Picture
     '''
 
     def __init__(self):
-        super(StorePictureState, self).__init__(outcomes = ['done'],    input_keys = ['Image'])
+        super(DisplayPictureState, self).__init__(outcomes = ['done'],    input_keys = ['Image'])
                 
 
     def execute(self, userdata):
