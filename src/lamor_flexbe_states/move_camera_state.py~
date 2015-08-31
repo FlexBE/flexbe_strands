@@ -40,9 +40,9 @@ class MoveCameraState(EventState):
 	def on_enter(self, userdata):
 		goal = PtuGotoGoal()
 		goal.pan = userdata.pan
-		goal.tilt = userdata.tilt
-		goal.pan_vel = 60
-		goal.tilt_vel = 60
+        goal.tilt = userdata.tilt
+        goal.pan_vel = 60
+        goal.tilt_vel = 60
 
 		self._error = False
 		try:
