@@ -59,6 +59,10 @@ class TweetPictureState(EventState):
         # Create the goal.
         tweet = SendTweetGoal() 
         tweet.text = userdata.tweet_text
+        
+        if len(userdata.tweet_text) > 140:
+            tweet.text = '#LAMoR15 #ECMR15 I just told a too looong joke, stupid tweet length!'
+
         tweet.with_photo = True
         img = cv2.imread(userdata.picture_path)
 
