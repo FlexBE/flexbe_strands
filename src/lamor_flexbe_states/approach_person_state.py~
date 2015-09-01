@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import rospy
+
 from flexbe_core import EventState, Logger
 from flexbe_core.proxy import ProxyActionClient
 
@@ -28,7 +30,7 @@ class ApproachPersonState(EventState):
 
 	def __init__(self):
 		# See example_state.py for basic explanations.
-		super(ApproachPersonActionState, self).__init__(outcomes = ['goal_reached', 'goal_failed','command_error'], input_keys = ['person_pose'])
+		super(ApproachPersonState, self).__init__(outcomes = ['goal_reached', 'goal_failed','command_error'], input_keys = ['person_pose'])
 
 		# Create the action client when building the behavior.
 		# This will cause the behavior to wait for the client before starting execution
@@ -37,6 +39,7 @@ class ApproachPersonState(EventState):
 		# and makes sure only one client is used, no matter how often this state is used in a behavior.
 		self._topic = 'stalk_pose'
 		self._client = ProxyActionClient({self._topic: StalkPoseAction}) # pass required clients as dict (topic: type)
+		self._timeoutTime = None
 
 		self._personTopic = '/upper_body_detector/closest_bounding_box_centre'
 
@@ -45,10 +48,13 @@ class ApproachPersonState(EventState):
 
 	def execute(self, userdata):
 		# While this state is active, check if the action has been finished and evaluate the result.
-
+		return 'goal_reached'
 		# Check if the client failed to send the goal.
 		if self._error:
 			return 'command_error'
+
+		if rospy.Time.now() > self._timeoutTime:
+			return 'goal_failed'
 
 		# Check if the action has been finished
 		if self._client.has_result(self._topic):
@@ -77,13 +83,15 @@ class ApproachPersonState(EventState):
 		goal.target = userdata.person_pose
 		self._error = False
 
-		try:
-			self._client.send_goal(self._topic, goal)
-		except Exception as e:
+		self._timeoutTime = rospy.Time.now() + rospy.Duration(20)
+
+		#try:
+		#	self._client.send_goal(self._topic, goal)
+		#except Exception as e:
 				# Since a state failure not necessarily causes a behavior failure, it is recommended to only print warnings, not errors.
 				# Using a linebreak before appending the error log enables the operator to collapse details in the GUI.
-			Logger.logwarn('Failed to send the ApproachPerson command:\n%s' % str(e))
-			self._error = True
+		#	Logger.logwarn('Failed to send the ApproachPerson command:\n%s' % str(e))
+		#	self._error = True
 
 	def on_exit(self, userdata):
 		# Make sure that the action is not running when leaving this state.

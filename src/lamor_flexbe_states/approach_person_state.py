@@ -48,6 +48,7 @@ class ApproachPersonState(EventState):
 
 	def execute(self, userdata):
 		# While this state is active, check if the action has been finished and evaluate the result.
+		print 'approach_person_state: returning goal_reached'
 		return 'goal_reached'
 		# Check if the client failed to send the goal.
 		if self._error:

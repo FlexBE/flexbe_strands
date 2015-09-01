@@ -31,8 +31,10 @@ class ShowPictureWebinterfaceState(EventState):
             msg = self._sub.get_last_msg(self._sub_topic)
 
             if msg.data == 'yes':
+		print 'show_picture_webinterface_state, returning tweet'
                 return 'tweet'
             else:
+		print 'show_picture_webinterface_state, returning forget'
                 return 'forget'
 
     def on_enter(self,userdata):

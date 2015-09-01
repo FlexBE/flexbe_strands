@@ -28,4 +28,5 @@ class TakePictureState(EventState):
 	def execute(self, userdata):
 		if self._sub.has_msg(self._topic):
 			userdata.Image = self._sub.get_last_msg(self._topic)
+		print 'take_picture_state: took a picture'
 		return 'done'

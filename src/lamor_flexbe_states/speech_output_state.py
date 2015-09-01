@@ -37,6 +37,7 @@ class SpeechOutputState(EventState):
 	def on_enter(self, userdata):
 		goal = maryttsGoal()
 		goal.text = userdata.text
+		print 'speech_output_state: say : ', goal.text
 
 		self._error = False
 		try:
