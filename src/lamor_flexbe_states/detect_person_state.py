@@ -46,7 +46,7 @@ class DetectPersonState(EventState):
 
 		
 	def on_enter(self, userdata):
-		print 'detect_person_state: trying to detect a person. timimg out after %f seconds', wait_timeout.toSec()
+		print 'detect_person_state: trying to detect a person'
 		self._sub.remove_last_msg(self._topic)
 		self._start_waiting_time = rospy.Time.now()
 		
