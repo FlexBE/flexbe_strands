@@ -48,7 +48,7 @@ class ApproachPersonState(EventState):
 
 	def execute(self, userdata):
 		# While this state is active, check if the action has been finished and evaluate the result.
-
+		return 'goal reached'
 		# Check if the client failed to send the goal.
 		if self._error:
 			return 'command_error'
@@ -85,13 +85,13 @@ class ApproachPersonState(EventState):
 
 		self._timeoutTime = rospy.Time.now() + rospy.Duration(20)
 
-		try:
-			self._client.send_goal(self._topic, goal)
-		except Exception as e:
+		#try:
+		#	self._client.send_goal(self._topic, goal)
+		#except Exception as e:
 				# Since a state failure not necessarily causes a behavior failure, it is recommended to only print warnings, not errors.
 				# Using a linebreak before appending the error log enables the operator to collapse details in the GUI.
-			Logger.logwarn('Failed to send the ApproachPerson command:\n%s' % str(e))
-			self._error = True
+		#	Logger.logwarn('Failed to send the ApproachPerson command:\n%s' % str(e))
+		#	self._error = True
 
 	def on_exit(self, userdata):
 		# Make sure that the action is not running when leaving this state.
