@@ -4,7 +4,7 @@ from distutils.core import setup
 from catkin_pkg.python_setup import generate_distutils_setup
 
 d = generate_distutils_setup(
-    packages = ['lamor_flexbe_states'],
+    packages = ['strands_flexbe_states'],
     package_dir = {'': 'src'}
 )
 

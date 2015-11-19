@@ -36,17 +36,15 @@ class DetectPersonState(EventState):
 	def execute(self, userdata):
 		if rospy.Time.now() > self._start_waiting_time + self._wait_timeout:
 			userdata.person_pose = None
-			print 'detect_person_state: did not detect any person'
+			Logger.logwarn('Did not detect any person within %.1f seconds.' % self._wait_timeout)
 			return 'not_detected'
 
 		if self._sub.has_msg(self._topic):
 			userdata.person_pose = self._sub.get_last_msg(self._topic)
-			print 'detect_person_state: detected a person'
 			return 'detected'
 
 		
 	def on_enter(self, userdata):
-		print 'detect_person_state: trying to detect a person'
 		self._sub.remove_last_msg(self._topic)
 		self._start_waiting_time = rospy.Time.now()
 		

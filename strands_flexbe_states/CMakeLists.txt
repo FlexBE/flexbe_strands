@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(lamor_flexbe_states)
+project(strands_flexbe_states)
 
 find_package(catkin REQUIRED)
 
